@@ -1,10 +1,13 @@
 
-hi
-<div class="media">
-
+<br>
+<br>
+<br>
+<br>
+<div class="media" ng-repeat='post in vm.posts track by $index'>
+  <div class="media-left rating"><h4>{{$index}}</h4></div>
   <nav class='media-left'>
     <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-    1000
+    {{post.rating}}
     <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 
   </nav>
@@ -13,12 +16,23 @@ hi
          alt="Generic placeholder image">
   </a>
   <div class="media-body">
-    <h4 class="media-heading">This is Reddit!!</h4>
-
+    <h4 class="media-heading">{{post.title}}</h4>
+    <h10>{{post.date}} by {{post.author}}</h10>
+    <p><a ui-sref="comments({commentId: {{$index}}})"><strong>comments: {{post.comments.length}}</strong></a></p>
   </div>
 </div>
 <style>
-  nav.media-left{
+  .rating{
     text-align: center;
+    padding-top: 10px;
+    color: grey;
+  }
+  nav.media-left{
+    color: grey;
+
+    text-align: center;
+  }
+  h10{
+    font-size: 11px;
   }
 </style>

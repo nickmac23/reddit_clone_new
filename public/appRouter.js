@@ -18,6 +18,10 @@
         url: "/",
         template: "<posts></posts>"
       })
+      .state('comments', {
+        url: "/comments/:commentId",
+        template: "<comments></comments>"
+      })
       // .state('login', {
       //   url: "/login",
       //   templateUrl: "./test.html"
