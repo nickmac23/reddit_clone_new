@@ -2,7 +2,7 @@
 <html ng-app='app' lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MovieSearch</title>
+  <title>Reddit</title>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css'>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -23,11 +23,14 @@
   <script src="/appRouter.js"></script>
   <script src="/posts/posts.factory.js"></script>
   <script src="/navBarr/navBar.dir.js"></script>
+  <script src="/sideBarr/sideBar.dir.js"></script>
   <script src="/posts/posts.dir.js"></script>
   <script src="/comments/comments.dir.js"></script>
 
   <nav-bar></nav-bar>
-  <section ui-view></section>
+  <section class="col-lg-9" ui-view></section>
+
+  <side-bar class='col-lg-3'></side-bar>
 
 
 </body>

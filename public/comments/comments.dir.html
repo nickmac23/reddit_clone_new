@@ -1,9 +1,5 @@
 <br>
-<br>
-<br>
-<br>
-
-<div class="media">
+<div class="media post">
   <nav class='media-left'>
     <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
     {{vm.post.rating}}
@@ -19,7 +15,23 @@
     <p><strong>comments: {{vm.post.comments.length}}</strong></p>
   </div>
 </div>
-<h1>comments</h1>
+<footer>
+  <h5>comments</h5>
+  <div class="media col-lg-12" ng-repeat='comment in vm.post.comments'>
+    <div class="media-body" >
+      <h10>5 hours ago by author:</h10>
+      <p><strong>{{comment}}</strong></p>
+    </div>
+  </div>
+</footer>
+
 <style>
+.post{
+  margin-left: 30px;
+}
+  h5{
+    margin-left: 20px;
+    border-top: dotted black 1px;
+  }
 
 </style>
