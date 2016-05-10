@@ -16,7 +16,7 @@
     $stateProvider
       .state('home', {
         url: "/",
-        template: "<app>Dog</app>"
+        template: "<posts></posts>"
       })
       // .state('login', {
       //   url: "/login",

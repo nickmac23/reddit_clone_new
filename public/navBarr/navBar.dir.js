@@ -5,9 +5,8 @@
   .directive('navBar', navBarDirective)
 
   function navBarDirective () {
-    console.log('sup');
     return {
-      templateUrl:'/layout/navBar.dir.html',
+      templateUrl:'/navBarr/navBar.dir.html',
     }
   }
 
