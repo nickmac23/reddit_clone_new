@@ -6,7 +6,6 @@
 
   function directive () {
     return {
-      scope: {},
       templateUrl: '/comments/comments.dir.html',
       controller: controller,
       controllerAs: 'vm',
@@ -14,12 +13,20 @@
   }
 
   function controller ($scope, $stateParams, postsService) {
-    console.log('here');
     var vm = this;
     activate();
 
     function activate () {
-      vm.post = postsService.posts[$stateParams.commentId]
+      postsService.list().then( function (responce) {
+        for (var i = 0; i < responce.length; i++) {
+          if (responce[i].post_id == $stateParams.commentId) {
+            vm.post = responce[i];
+            console.log(vm.post);
+            return
+          }
+        }
+
+      })
     }
   }
 }());

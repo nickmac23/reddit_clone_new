@@ -1,34 +1,23 @@
 (function() {
   'use strict';
 
+  factory.$inject =['$http'];
+
   angular.module('app')
   .factory('postsService', factory)
 
-  function factory () {
+  function factory ($http) {
+    var posts = []
     return {
-      posts: [
-        {
-          title: 'This is reddit!',
-          author: 'Leonidus',
-          rating: 1000,
-          date: 'june 23 1990',
-          comments: ['0', '300!', 'oh shit!', 'this is reddit!']
-        },
-        {
-          title: 'This is reddit!',
-          author: 'Leonidus',
-          rating: 1000,
-          date: 'june 23 1990',
-          comments: ['1', '300!', 'oh shit!', 'this is reddit!']
-        },
-        {
-          title: 'This is reddit!',
-          author: 'Leonidus',
-          rating: 1000,
-          date: 'june 23 1990',
-          comments: ['2', '300!', 'oh shit!', 'this is reddit!']
-        },
-      ]
+      list: listPosts,
+    }
+
+    function listPosts () {
+      return $http.get('http://localhost:3000/api/')
+      .then( function (responce) {
+        posts = responce.data;
+        return posts
+      })
     }
   }
 }());

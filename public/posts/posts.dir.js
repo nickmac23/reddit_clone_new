@@ -16,7 +16,9 @@
       activate ()
 
       function activate () {
-        vm.posts = postsService.posts
+        postsService.list().then( function (responce) {
+          vm.posts = responce;
+        })
       }
     }
   }

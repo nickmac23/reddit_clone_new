@@ -12,15 +12,17 @@
   <div class="media-body">
     <h4 class="media-heading">{{vm.post.title}}</h4>
     <h10>{{vm.post.date}} by {{vm.post.author}}</h10>
-    <p><strong>comments: {{vm.post.comments.length}}</strong></p>
+    <!-- {{vm.post.comments}} -->
   </div>
 </div>
 <footer>
   <h5>comments</h5>
-  <div class="media col-lg-12" ng-repeat='comment in vm.post.comments'>
-    <div class="media-body" >
-      <h10>5 hours ago by author:</h10>
-      <p><strong>{{comment}}</strong></p>
+  <div>
+    <div class="media col-lg-12" ng-repeat='comment in vm.post.comments track by $index'>
+      <div class="media-body" >
+        <h10>{{comment.date}} by {{comment.name}}:</h10>
+        <p><strong>{{comment.comment}}</strong></p>
+      </div>
     </div>
   </div>
 </footer>

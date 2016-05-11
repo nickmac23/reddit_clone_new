@@ -1,5 +1,5 @@
 <br>
-  <div class="media" ng-repeat='post in vm.posts track by $index'>
+  <div class="media" ng-repeat='post in vm.posts | orderBy: "-rating" | filter: search.title '>
     <div class="media-left rating"><h4>{{$index}}</h4></div>
     <nav class='media-left'>
       <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
@@ -13,8 +13,8 @@
     </a>
     <div class="media-body">
       <h4 class="media-heading">{{post.title}}</h4>
-      <h10>{{post.date}} by {{post.author}}</h10>
-      <p><a ui-sref="comments({commentId: {{$index}}})"><strong>comments: {{post.comments.length}}</strong></a></p>
+      <h10>{{post.date}} by {{post.name}}</h10>
+      <p><a ui-sref="comments({commentId: {{post.post_id}}})"><strong>comments: {{post.comments.length}}</strong></a></p>
     </div>
 </div>
 
