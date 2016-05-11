@@ -25,9 +25,9 @@ exports.up = function(knex, Promise) {
 
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('posts')
+  return knex.schema.dropTable('comments')
   .then( function () {
-    return knex.schema.dropTable('comments')
+    return knex.schema.dropTable('posts')
   })
   .then( function () {
     return knex.schema.dropTable('authors')

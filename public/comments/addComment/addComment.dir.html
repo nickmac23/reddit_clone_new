@@ -1,0 +1,25 @@
+<main class='comment'>
+  <form class="form-horizontal" ng-model='frm.form' ng-submit='cm.addComment()'>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Add Comment</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" placeholder='Enter a comment' ng-model='frm.comment'></textarea>
+      </div>
+      <button type='submit' class='btn btn-primary'>submit</button>
+      <button type='button' class="btn btn-default" ng-click='show=!show'>Cancle</button>
+    </div>
+  </form>
+</main>
+
+
+<style>
+  .comment{
+    border-bottom: dotted 1px black;
+    margin-left: 20px;
+  }
+  .comment button {
+    float: right;
+    margin-top:5px;
+    margin-right: 15px;
+  }
+</style>

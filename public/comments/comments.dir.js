@@ -15,6 +15,7 @@
 
   function controller ($scope, $stateParams, postsService) {
     var vm = this;
+    $scope.vm.comment = false;
     activate();
 
     function activate () {
@@ -22,7 +23,6 @@
         for (var i = 0; i < responce.length; i++) {
           if (responce[i].post_id == $stateParams.commentId) {
             vm.post = responce[i];
-            console.log(vm.post);
             return
           }
         }
