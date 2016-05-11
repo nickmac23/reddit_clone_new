@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
      return knex.schema.createTable('posts', function(table){
        table.increments('id');
        table.string('title');
+       table.string('url');
        table.timestamp('date').defaultTo(knex.fn.now());
        table.integer('rating').defaultTo(0);
        table.integer('author_fk').references('authors.id').onDelete('cascade');

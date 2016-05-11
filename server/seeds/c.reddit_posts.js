@@ -5,8 +5,8 @@ exports.seed = function(knex, Promise) {
     knex('posts').del(),
 
     // Inserts seed entries
-    knex('posts').insert({title: '1', rating: 100, author_fk: 1, comment_fk: 1}),
-    knex('posts').insert({title: '2', rating: 20, author_fk: 2, comment_fk: 2}),
-    knex('posts').insert({title: '3', rating: 40, author_fk: 3, comment_fk: 3})
+    knex('posts').insert({title: 'this is reddit!', rating: 100, url: 'http://fillmurray.com/200/200' , author_fk: 1, comment_fk: 1}),
+    knex('posts').insert({title: 'boooom!', rating: 20, url: 'http://fillmurray.com/200/210', author_fk: 2, comment_fk: 2}),
+    knex('posts').insert({title: 'please work', rating: 40, url: 'http://fillmurray.com/210/2 00', author_fk: 3, comment_fk: 3})
   );
 };
