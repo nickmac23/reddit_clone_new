@@ -2,7 +2,7 @@
 exports.seed = function(knex, Promise) {
   return Promise.join(
     // Deletes ALL existing entries
-    knex('comments').del(),
+    knex('authors').del(),
 
     // Inserts seed entries
     knex('comments').insert({comment: 'This is Reddit!', author_fk: 1, post_fk: 1}),
