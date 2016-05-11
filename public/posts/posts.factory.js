@@ -22,9 +22,10 @@
     }
 
     function addPost (postData) {
-      return $http.post('http://localhost:3000/api/post')
+      return $http.post('http://localhost:3000/api/post', postData)
       .then( function (responce) {
         posts.push(responce.data)
+        
         return posts
       })
     }

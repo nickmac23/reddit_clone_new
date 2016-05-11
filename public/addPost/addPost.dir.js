@@ -12,16 +12,17 @@
       controllerAs: 'vm'
     }
 
-    function controller (postsService, $scope) {
+    function controller (postsService, $scope, $state) {
       var vm = this;
       $scope.frm = {}
       $scope.frm.url = 'http://fillmurray.com/200/300';
       vm.addPost = addPost
 
       function addPost () {
-        $scope.frm.name = 'Leonidus'
+        $scope.frm.author_fk = '1'
         postsService.add($scope.frm).then(function (data) {
           $scope.frm = {};
+          $state.go('home')
         })
       }
     }

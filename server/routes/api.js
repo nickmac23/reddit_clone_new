@@ -32,4 +32,10 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/post', function(req, res, next) {
+  knex('posts').insert(req.body).then(function (responce) {
+    res.json(responce);
+  })
+})
+
 module.exports = router;
