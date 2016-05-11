@@ -5,9 +5,10 @@ var knex = require('../db/knex.js')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   knex('authors')
-  .innerJoin('posts', 'posts.author_fk', 'authors.id')
-  .innerJoin('comments', 'comments.author_fk', 'authors.id')
+  .leftOuterJoin('posts', 'posts.author_fk', 'authors.author_id')
+  // .leftOuterJoin('comments', 'comments.author_fk', 'authors.author_id')
   .then( function (authors) {
+    console.log(authors);
     res.json(authors)
   })
 });
