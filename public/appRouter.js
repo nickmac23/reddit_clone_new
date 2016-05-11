@@ -22,9 +22,9 @@
         url: "/comments/:commentId",
         template: "<comments></comments>"
       })
-      // .state('login', {
-      //   url: "/login",
-      //   templateUrl: "./test.html"
-      // })
+      .state('addpost', {
+        url: "/addpost",
+        template: "<add-post></add-post>"
+      })
   }
 }());

@@ -7,6 +7,7 @@
   function navBarDirective () {
     return {
       templateUrl:'/navBarr/navBar.dir.html',
+      scope: {},
     }
   }
 

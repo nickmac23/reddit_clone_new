@@ -7,6 +7,7 @@
   function directive () {
     return {
       templateUrl: '/comments/comments.dir.html',
+      scope: {},
       controller: controller,
       controllerAs: 'vm',
     }

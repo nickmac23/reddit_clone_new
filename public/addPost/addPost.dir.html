@@ -1,0 +1,33 @@
+<br>
+<main>
+<form class="form-horizontal" ng-model='frm.form' name='form' ng-submit='vm.addPost()'>
+  <fieldset>
+    <legend>Create a Post</legend>
+    <div class="form-group">
+      <label class="col-lg-2 control-label" >Title</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" ng-model='frm.title' name='title' placeholder="Title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Add Photo</label>
+      <div class="col-lg-10">
+        <input type="url" class="form-control" ng-model='frm.url' name='url' placeholder="add img url" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Content</label>
+      <div class="col-lg-10">
+        <!-- <textarea class="form-control" rows="3" ng-model='frm.content'></textarea> -->
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <a ui-sref='home'><button type="reset" class="btn btn-default">Cancel</button></a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</main>

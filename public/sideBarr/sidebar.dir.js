@@ -6,7 +6,7 @@
 
     function directive () {
       return {
-        templateUrl: '/sideBarr/sideBar.dir.html'
+        templateUrl: '/sideBarr/sideBar.dir.html',
       }
     }
 }());
