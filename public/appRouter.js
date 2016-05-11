@@ -19,7 +19,7 @@
         template: "<posts></posts>"
       })
       .state('comments', {
-        url: "/comments/:commentId",
+        url: "/comments/:postId",
         template: "<comments></comments>"
       })
       .state('addpost', {

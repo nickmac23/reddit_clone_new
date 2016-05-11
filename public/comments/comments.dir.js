@@ -21,7 +21,7 @@
     function activate () {
       postsService.list().then( function (responce) {
         for (var i = 0; i < responce.length; i++) {
-          if (responce[i].post_id == $stateParams.commentId) {
+          if (responce[i].post_id == $stateParams.postId) {
             vm.post = responce[i];
             return
           }

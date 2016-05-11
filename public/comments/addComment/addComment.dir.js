@@ -14,13 +14,17 @@
       }
     }
 
-    function controller ($scope) {
+    function controller ($scope, postsService, $stateParams) {
       var cm = this;
 
       cm.addComment = addComment
 
       function addComment () {
-        console.log($scope.frm);
+        $scope.frm.post_fk = $stateParams.postId
+        $scope.frm.author_fk = 2
+        postsService.comment($scope.frm).then( function (data) {
+          $scope.frm = {};
+        })
       }
     }
   }

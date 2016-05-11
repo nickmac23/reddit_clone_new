@@ -37,5 +37,10 @@ router.post('/post', function(req, res, next) {
     res.json(responce);
   })
 })
+router.post('/comment', function(req, res, next) {
+  knex('comments').insert(req.body).then(function (responce) {
+    res.json(responce.config);
+  })
+})
 
 module.exports = router;

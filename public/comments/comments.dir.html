@@ -15,7 +15,12 @@
   </div>
 </div>
 <footer>
-  <h5>Comments | <a ng-click='vm.comment=!vm.comment'>Add Comment</a> </h5>
+  <h5>Comments |
+    <a ng-click='vm.comment=!vm.comment'>Add Comment
+      <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true" ng-hide='vm.comment'></span>
+      <span class="glyphicon glyphicon-triangle-top" aria-hidden="true" ng-show='vm.comment'></span>
+    </a>
+  </h5>
 
   <add-comment show='vm.comment' ng-show='vm.comment'></add-comment>
 
