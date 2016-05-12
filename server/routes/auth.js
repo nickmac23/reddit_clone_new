@@ -3,21 +3,12 @@ var router = express.Router();
 var knex = require('../db/knex.js')
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+var secret = 'nicknasty'
 
 
 function token (id) {
-  var secret = 'nicknasty'
   var token = jwt.sign({id: id}, secret)
   return token
-}
-
-function checkToken (token) {
-    try {
-      var decoded = jwt.verify(token, secret);
-      console.log('first', decoded);
-    } catch(err) {
-      console.log('second', decoded)
-    }
 }
 
 function checkAuthor (name) {
