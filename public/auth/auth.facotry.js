@@ -15,13 +15,19 @@
     function login (userData) {
       return $http.post('http://localhost:3000/auth/login', userData)
       .then( function (responce) {
-        return responce.data
+        if (responce.data.token) {
+          localStorage.setItem('token', responce.data.token);
+        }
+        return responce.data.user
       })
     }
     function signup (userData) {
       return $http.post('http://localhost:3000/auth/signup', userData)
       .then( function (responce) {
-        return responce.data
+        if (responce.data.token) {
+          localStorage.setItem('token', responce.data.token);
+        }
+        return responce.data.user
       })
     }
   }
