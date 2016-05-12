@@ -14,12 +14,27 @@
       function controller ($scope, $http, authService) {
         var sb = this;
         sb.login = login;
+        sb.user = null;
+        activate ();
+
+        $scope.$watch(function(){
+            return authService.getUser();
+          },
+          function (newUser) {
+            sb.user = newUser;
+          }, true);
+
+        function activate () {
+          authService.pageLoad().then( function(data) {
+            sb.user = data
+          })
+        }
 
 
         function login () {
           authService.login($scope.lgn).then(function (responce) {
             $scope.lgn = {}
-            console.log(responce);
+            sb.user = responce;
           })
         }
       }

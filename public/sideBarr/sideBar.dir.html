@@ -8,13 +8,16 @@
         </div>
       </div>
   </form>
-  <form class='login' name='form' ng-model='lgn.form' ng-submit='sb.login()'>
+  <form class='login' name='form' ng-model='lgn.form' ng-submit='sb.login()' ng-hide='sb.user'>
     <div >
       <input type="text"   ng-model='lgn.name' placeholder="User Name">
       <input type="text"   ng-model='lgn.password' placeholder="Password">
     </div>
     <button  type='submit'>login</button>
   </form>
+  <div class='col-lg-12 img'>
+    <img ng-show='sb.user' ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY_vgi7ja-IHgzGZfTxIuFP3wMuJoF54DoCLJkycJWM2HiyS36Cg" alt="">
+  </div>
 </main>
 <style>
   .login{
@@ -36,4 +39,8 @@
     width: 47%;
   }
 
+  .img img{
+    margin-left: -15px;
+    width: 110%;
+  }
 </style>

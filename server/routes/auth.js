@@ -4,6 +4,7 @@ var knex = require('../db/knex.js')
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var secret = 'nicknasty'
+var user;
 
 
 function token (id) {
@@ -11,15 +12,32 @@ function token (id) {
   return token
 }
 
-function checkAuthor (name) {
-  return knex('authors').where({name: name}).first()
+function checkAuthor (data) {
+  return knex('authors').where(data).first()
     .then(function (author) {
       return author
     })
 }
 
+function checkToken (req,res,next){
+  try {
+    var decoded = jwt.verify(req.headers.authorization, secret);
+      user = decoded.id
+      next()
+    }
+   catch(err) {
+    res.status(500).send("invalid token");
+  }
+}
+
+router.post('/loggedin', checkToken, function (req,res, next) {
+  checkAuthor({author_id: user}).then( function (responce){
+    res.json(responce)
+  })
+})
+
 router.post('/login', function(req, res, next) {
-  checkAuthor(req.body.name).then(function (author) {
+  checkAuthor({name: req.body.name}).then(function (author) {
     if (!author) {
       res.json('invalid username')
     } else {
@@ -38,7 +56,7 @@ router.post('/login', function(req, res, next) {
 
 
 router.post('/signup', function(req, res, next) {
-  checkAuthor (req.body.name).then(function (author) {
+  checkAuthor ({name: req.body.name}).then(function (author) {
     if (author) {
       res.json('username allready exsits!')
     } else {

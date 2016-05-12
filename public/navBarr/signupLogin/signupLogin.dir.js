@@ -16,18 +16,26 @@
       var sl = this;
       sl.login = login;
       sl.signup = signup;
+      sl.logout = logout;
+
+      $scope.$watch(function(){
+          return authService.getUser();
+        },
+        function (newUser) {
+          sl.user = newUser;
+        }, true);
 
       function login () {
         authService.login($scope.lgn).then(function (responce) {
-          console.log('here', responce);
         })
       }
       function signup () {
         authService.signup($scope.sng)
         .then( function(responce) {
-          console.log( responce );
-
         })
+      }
+      function logout () {
+        authService.logOut()
       }
 
     }
