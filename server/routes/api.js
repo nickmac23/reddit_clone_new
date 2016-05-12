@@ -3,19 +3,24 @@ var router = express.Router();
 var knex = require('../db/knex.js')
 var jwt = require('jsonwebtoken');
 var secret = 'nicknasty';
-
+var token;
 var postarray = []
 
 function checkToken (req,res,next){
   try {
     var decoded = jwt.verify(req.headers.authorization, secret);
+      // token(decoded.id)
       next();
     }
    catch(err) {
     res.status(500).send("invalid token");
   }
-  // next()
 }
+
+// function token (id) {
+//   token = jwt.sign({id: id}, secret)
+//   return token
+// }
 /* GET home page. */
 router.get('/', function(req, res, next) {
   postarray = [];
@@ -50,11 +55,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
-router.post('/post', function(req, res, next) {
+router.post('/post', checkToken, function(req, res, next) {
   knex('posts').insert(req.body).then(function (responce) {
     res.json(responce);
   })
 })
+
 router.post('/comment',checkToken, function(req, res, next) {
   knex('comments').insert(req.body).then(function (responce) {
     res.json(responce.config);
