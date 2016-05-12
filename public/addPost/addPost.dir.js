@@ -19,7 +19,6 @@
       vm.addPost = addPost
 
       function addPost () {
-        $scope.frm.author_fk = '1'
         postsService.add($scope.frm).then(function (data) {
           $scope.frm = {};
           $state.go('home')

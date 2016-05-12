@@ -7,10 +7,10 @@ var secret = 'nicknasty'
 var user;
 
 
-function token (id) {
-  var token = jwt.sign({id: id}, secret)
+function token (id, name) {
+  var token = jwt.sign({id: id, name: name}, secret)
   return token
-}
+} 
 
 function checkAuthor (data) {
   return knex('authors').where(data).first()
@@ -44,7 +44,7 @@ router.post('/login', function(req, res, next) {
       bcrypt.compare(req.body.password, author.password, function(err, correct) {
           if (correct) {
 
-            var tk = token(author.author_id)
+            var tk = token(author.author_id, author.name)
             res.json({token: tk, user: author})
           } else {
             res.json('bad password no token!')
@@ -68,7 +68,7 @@ router.post('/signup', function(req, res, next) {
           })
           .returning('*')
           .then( function (author) {
-            var tk = token (author[0].author_id)
+            var tk = token (author[0].author_id, author[0].name)
             res.json({token: tk, user: author})
           })
         });

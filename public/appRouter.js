@@ -20,11 +20,18 @@
       })
       .state('comments', {
         url: "/comments/:postId",
-        template: "<comments></comments>"
+        template: "<comments></comments>",
       })
       .state('addpost', {
         url: "/addpost",
         template: "<add-post></add-post>",
+        resolve:{
+         simpleObj: function(authService){
+            return authService.loggedin().then( function (data) {
+              return data
+            })
+          }
+         },
       })
     $httpProvider.interceptors.push("AuthInterceptor");
   }

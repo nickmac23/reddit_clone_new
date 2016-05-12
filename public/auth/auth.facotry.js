@@ -11,7 +11,7 @@
   function factory ($http) {
     var user = false;
     return {
-      pageLoad: pageLoad,
+      loggedin: loggedin,
       login: login,
       signup: signup,
       getUser: getUser,
@@ -20,7 +20,7 @@
     function getUser () {
       return user
     }
-    function pageLoad () {
+    function loggedin () {
       return $http.post('http://localhost:3000/auth/loggedin')
       .then( function (responce) {
         if (responce.data) {
@@ -46,7 +46,7 @@
       .then( function (responce) {
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
-          user = {user: responce.data.author, id: responce.data.author_id}
+          user = {name: responce.data.author, id: responce.data.author_id}
 
         }
         return user

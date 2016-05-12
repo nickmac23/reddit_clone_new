@@ -4,12 +4,15 @@ var knex = require('../db/knex.js')
 var jwt = require('jsonwebtoken');
 var secret = 'nicknasty';
 var token;
+var id;
+var name;
 var postarray = []
 
 function checkToken (req,res,next){
   try {
     var decoded = jwt.verify(req.headers.authorization, secret);
-      // token(decoded.id)
+      id = decoded.id
+      name = decoded.name
       next();
     }
    catch(err) {
@@ -56,14 +59,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/post', checkToken, function(req, res, next) {
+  req.body.author_fk = id
   knex('posts').insert(req.body).then(function (responce) {
     res.json(responce);
   })
 })
 
 router.post('/comment',checkToken, function(req, res, next) {
-  knex('comments').insert(req.body).then(function (responce) {
-    res.json(responce.config);
+  req.body.author_fk = id;
+  knex('comments').insert(req.body)
+  .returning('*')
+  .then(function (responce) {
+    responce[0].name = name
+    res.json(responce);
   })
 })
 router.post('/vote',checkToken, function(req, res, next) {

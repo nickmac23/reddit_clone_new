@@ -25,7 +25,7 @@
           }, true);
 
         function activate () {
-          authService.pageLoad().then( function(data) {
+          authService.loggedin().then( function(data) {
             sb.user = data
           })
         }

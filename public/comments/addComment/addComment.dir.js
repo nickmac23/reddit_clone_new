@@ -21,7 +21,6 @@
 
       function addComment () {
         $scope.frm.post_fk = $stateParams.postId
-        $scope.frm.author_fk = 2
         postsService.comment($scope.frm).then( function (data) {
           $scope.frm = {};
           $scope.show=!$scope.show;
