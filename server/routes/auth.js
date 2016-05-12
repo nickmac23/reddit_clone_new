@@ -10,9 +10,9 @@ router.post('/login', function(req, res, next) {
   .then(function (author) {
     bcrypt.compare(req.body.password, author.password, function(err, correct) {
         if (correct) {
-          res.json('dope!')
+          res.json('tocken!')
         } else {
-          res.json('nope!')
+          res.json('bad password no token!')
         }
     });
   })

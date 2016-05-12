@@ -5,10 +5,15 @@ var postarray = []
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  postarray = [];
   knex('authors')
   .leftOuterJoin('posts', 'posts.author_fk', 'authors.author_id')
   .then( function (posts) {
-    postarray = posts
+    for (var i = 0; i < posts.length; i++) {
+      if (!(posts[i].title == null)) {
+        postarray.push(posts[i])
+      }
+    }
     return postarray
   }).then( function (postarray){
     knex('authors')
