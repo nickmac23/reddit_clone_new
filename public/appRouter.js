@@ -10,7 +10,7 @@
   setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
   function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider){
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -26,5 +26,6 @@
         url: "/addpost",
         template: "<add-post></add-post>"
       })
+
   }
 }());

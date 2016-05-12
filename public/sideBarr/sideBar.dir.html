@@ -8,10 +8,10 @@
         </div>
       </div>
   </form>
-  <form class='login'>
+  <form class='login' name='form' ng-model='lgn.form' ng-submit='sb.login()'>
     <div >
-      <input type="text"   placeholder="User Name">
-      <input type="text"   placeholder="Password">
+      <input type="text"   ng-model='lgn.name' placeholder="User Name">
+      <input type="text"   ng-model='lgn.password' placeholder="Password">
     </div>
     <button  type='submit'>login</button>
   </form>
