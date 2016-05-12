@@ -14,7 +14,7 @@
     <div class="media-body">
       <h4 class="media-heading">{{post.title}}</h4>
       <h10>{{post.date}} by {{post.name}}</h10>
-      <p><a ui-sref="comments({postId: {{post.post_id}}})"><strong>comments: {{post.comments.length}}</strong></a></p>
+      <p><a ui-sref="comments({ postId: post.post_id })"><strong>comments: {{post.comments.length}}</strong></a></p>
     </div>
 </div>
 

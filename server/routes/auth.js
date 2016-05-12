@@ -1,15 +1,35 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex.js')
-var postarray = []
+var bcrypt = require('bcrypt');
+
 
 /* GET home page. */
 router.post('/login', function(req, res, next) {
-  res.json({test: req.body})
+  knex('authors').where({name: req.body.name}).first()
+  .then(function (author) {
+    bcrypt.compare(req.body.password, author.password, function(err, correct) {
+        if (correct) {
+          res.json('dope!')
+        } else {
+          res.json('nope!')
+        }
+    });
+  })
 })
 
 router.post('/signup', function(req, res, next) {
-  res.json({test: req.body})
+  bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        knex('authors').insert({
+                              name: req.body.name,
+                              password: hash,
+                              })
+        .then( function (data) {
+          res.json(data)
+        })
+      });
+  });
 })
 
 module.exports = router;
