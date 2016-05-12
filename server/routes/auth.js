@@ -8,13 +8,17 @@ var bcrypt = require('bcrypt');
 router.post('/login', function(req, res, next) {
   knex('authors').where({name: req.body.name}).first()
   .then(function (author) {
-    bcrypt.compare(req.body.password, author.password, function(err, correct) {
-        if (correct) {
-          res.json('tocken!')
-        } else {
-          res.json('bad password no token!')
-        }
-    });
+    if (!author) {
+      res.json('invalid username')
+    } else {
+      bcrypt.compare(req.body.password, author.password, function(err, correct) {
+          if (correct) {
+            res.json('tocken!')
+          } else {
+            res.json('bad password no token!')
+          }
+      });
+    }
   })
 })
 

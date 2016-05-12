@@ -17,7 +17,10 @@
 
 
         function login () {
-          authService.login($scope.lgn)
+          authService.login($scope.lgn).then(function (responce) {
+            $scope.lgn = {}
+            console.log(responce);
+          })
         }
       }
     }

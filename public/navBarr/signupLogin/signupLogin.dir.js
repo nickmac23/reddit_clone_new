@@ -18,10 +18,16 @@
       sl.signup = signup;
 
       function login () {
-        authService.login($scope.lgn)
+        authService.login($scope.lgn).then(function (responce) {
+          console.log('here', responce);
+        })
       }
       function signup () {
         authService.signup($scope.sng)
+        .then( function(responce) {
+          console.log( responce );
+
+        })
       }
 
     }

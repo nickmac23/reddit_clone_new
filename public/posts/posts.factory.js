@@ -18,7 +18,6 @@
       return $http.get('http://localhost:3000/api/')
       .then( function (responce) {
         posts = responce.data;
-        console.log(posts);
         return posts
       })
     }
