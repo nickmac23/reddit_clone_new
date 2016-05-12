@@ -2,9 +2,9 @@
   <div class="media" ng-repeat='post in vm.posts | orderBy: "-rating" | filter: search.title '>
     <div class="media-left rating"><h4>{{$index}}</h4></div>
     <nav class='media-left'>
-      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click='vm.vote(10, post.post_id)'></span>
       {{post.rating}}
-      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click='vm.vote(-10, post.post_id)'></span>
 
     </nav>
     <a class="media-left" href="#">

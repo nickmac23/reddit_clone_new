@@ -12,6 +12,7 @@
       list: listPosts,
       add: addPost,
       comment: addComment,
+      vote: vote,
     }
 
     function listPosts () {
@@ -42,6 +43,19 @@
           }
         }
         return posts;
+      })
+    }
+
+    function vote (data) {
+      return $http.post('http://localhost:3000/api/vote', data)
+      .then( function (responce) {
+        var data = responce.data[0];
+        for (var i = 0; i < posts.length; i++) {
+          if (posts[i].post_id == data.post_id) {
+            posts[i].rating = data.rating;
+          }
+        }
+        return posts
       })
     }
   }

@@ -66,5 +66,13 @@ router.post('/comment',checkToken, function(req, res, next) {
     res.json(responce.config);
   })
 })
+router.post('/vote',checkToken, function(req, res, next) {
+  return knex('posts').where({post_id: req.body.post_id})
+  .increment('rating', req.body.num)
+  .returning('*')
+  .then(function(responce){
+    res.json(responce)
+  })
+})
 
 module.exports = router;

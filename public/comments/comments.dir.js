@@ -16,7 +16,12 @@
   function controller ($scope, $stateParams, postsService) {
     var vm = this;
     $scope.vm.comment = false;
+    vm.vote = vote;
     activate();
+
+    function vote (num, post_id) {
+      postsService.vote({num: num, post_id: post_id })
+    }
 
     function activate () {
       postsService.list().then( function (responce) {

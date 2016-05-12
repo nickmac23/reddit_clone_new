@@ -13,12 +13,17 @@
 
     function controller (postsService) {
       var vm = this;
+      vm.vote = vote;
       activate ()
 
       function activate () {
         postsService.list().then( function (responce) {
           vm.posts = responce;
         })
+      }
+
+      function vote (num, post_id) {
+        postsService.vote({num: num, post_id: post_id })
       }
     }
   }

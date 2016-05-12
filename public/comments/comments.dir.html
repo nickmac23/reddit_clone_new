@@ -1,9 +1,9 @@
 <br>
 <div class="media post">
   <nav class='media-left'>
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click='vm.vote(10, vm.post.post_id)' ></span>
     {{vm.post.rating}}
-    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click='vm.vote(-10, vm.post.post_id)' ></span>
   </nav>
   <a class="media-left" href="#">
     <img class="media-object" ng-src="http://fillmurray.com/70/70"
