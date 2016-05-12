@@ -18,7 +18,7 @@
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
         }
-        return responce.data.user
+        return responce.data
       })
     }
     function signup (userData) {
@@ -27,7 +27,7 @@
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
         }
-        return responce.data.user
+        return responce.data
       })
     }
   }
