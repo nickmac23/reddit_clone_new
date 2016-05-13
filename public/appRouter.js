@@ -5,6 +5,8 @@
     'ui.bootstrap'
   ];
 
+  var firstCheck = true;
+
   angular.module('app', dependencies)
     .config(setupRoutes);
 
@@ -29,7 +31,6 @@
         resolve:{
          simpleObj: function(authService){
             return authService.loggedin().then( function (data) {
-              console.log(data);
               return data
             })
           }
@@ -39,7 +40,7 @@
   }
 
   angular.module('app')
-  .service("AuthInterceptor", function($window, $location, $q){
+  .service("AuthInterceptor", function($window, $location, $q, $rootScope){
     return {
       request: function(config){
         // prevent browser bar tampering for /api routes
@@ -50,6 +51,11 @@
       },
       responseError: function(err){
         console.log(err.data);
+
+        if (err.status === 403 && !firstCheck) {
+          $rootScope.$emit('event', {foo:'bar'})
+        }
+        firstCheck = false;
         // if you mess around with the token, log them out and destroy it
         if(err.data === "invalid token" || err.data === "invalid signature" || err.data === "jwt malformed"){
           // $location.path("/logout");

@@ -11,7 +11,7 @@
       controllerAs: 'vm',
     }
 
-    function controller (postsService) {
+    function controller (postsService, $rootScope) {
       var vm = this;
       vm.vote = vote;
       activate ()
@@ -23,6 +23,8 @@
       }
 
       function vote (num, post_id) {
+        console.log('here');
+        // $rootScope.$emit('event', {foo:'bar'})
         postsService.vote({num: num, post_id: post_id })
       }
     }

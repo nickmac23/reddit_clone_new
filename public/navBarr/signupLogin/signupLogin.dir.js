@@ -12,10 +12,13 @@
       controllerAs: 'sl',
     }
 
-    function controller ($scope, authService, $uibModal) {
+    function controller ($scope, authService, $uibModal, $rootScope) {
       var sl = this;
       sl.logout = logout;
       sl.modal = modal;
+      $rootScope.$on('event', function () {
+        sl.modal()
+      })
 
       $scope.$watch(function(){
           return authService.getUser();

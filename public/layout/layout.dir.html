@@ -1,11 +1,8 @@
-<main class='sign col-lg-12'>
-  <p ng-hide='sl.user'>Want to join? <a ng-click="sl.modal()">Log in</a>
-    or <a ng-click="sl.modal()">sign up</a> in seconds | <strong>English</strong>
-  </p>
-  <p ng-show='sl.user' class='col-lg-12 loggedin'><strong>Welcome: {{sl.user.name}}</strong> |
-    <strong ng-click='sl.logout()'><a>LOGOUT</strong></a>
-  </p>
-</main>
+<nav-bar  modal='layOut.openModal'></nav-bar>
+
+<section  modal='layOut.openModal' class="col-lg-9" ui-view></section>
+
+<side-bar class='col-lg-3' modal='layOut.openModal'></side-bar>
 
 
 <script type="text/ng-template" id="myModalContent.html">
@@ -43,30 +40,29 @@
         </div>
     </script>
 
+    <style>
+      .loggedin {
+        display:flex;
+        justify-content: space-between;
+      }
+      .sign {
+        height: 20px;
+        background-color: rgb(240,	247,	254);
+        right: -50px;
+        bottom: -12px;
+      }
+      .sign p {
+        margin-top: 3px;
+        font-size: 10px;
+      }
 
-<style>
-  .loggedin {
-    display:flex;
-    justify-content: space-between;
-  }
-  .sign {
-    height: 20px;
-    background-color: rgb(240,	247,	254);
-    right: -50px;
-    bottom: -12px;
-  }
-  .sign p {
-    margin-top: 3px;
-    font-size: 10px;
-  }
-
-  .modal-content form {
-    padding: 50px;
-  }
-  .left{
-    border-right: 1px solid rgb(204,	204,	204);
-  }
-  .modal-content form button {
-    float: right;
-  }
-</style>
+      .modal-content form {
+        padding: 50px;
+      }
+      .left{
+        border-right: 1px solid rgb(204,	204,	204);
+      }
+      .modal-content form button {
+        float: right;
+      }
+    </style>

@@ -16,6 +16,7 @@
 
     function controller ($scope, postsService, $stateParams) {
       var cm = this;
+      $scope.frm = {};
 
       cm.addComment = addComment
 
