@@ -8,12 +8,12 @@
         </div>
       </div>
   </form>
-  <form class='login' name='form' ng-model='lgn.form' ng-submit='sb.login()' ng-hide='sb.user'>
+  <form class='login' name='form' ng-model='sbFrm.form' ng-submit='sb.login()' ng-hide='sb.user' novalidate>
     <div >
-      <input type="text"   ng-model='lgn.name' placeholder="User Name">
-      <input type="text"   ng-model='lgn.password' placeholder="Password">
+      <input type="text" name='name' ng-model='sbFrm.name' placeholder="User Name" required>
+      <input type="password" name='password' ng-model='sbFrm.password' placeholder="Password" required>
     </div>
-    <button  type='submit'>login</button>
+    <button  type='submit' ng-disabled='form.$invalid'>login</button>
   </form>
   <div class='col-lg-12 img'>
     <img ng-show='sb.user' ng-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY_vgi7ja-IHgzGZfTxIuFP3wMuJoF54DoCLJkycJWM2HiyS36Cg" alt="">

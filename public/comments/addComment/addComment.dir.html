@@ -1,11 +1,11 @@
 <main class='comment'>
-  <form class="form-horizontal" ng-model='frm.form' ng-submit='cm.addComment()'>
+  <form class="form-horizontal" name='form' ng-model='frm.form' ng-submit='cm.addComment()' novalidate>
     <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">Add Comment</label>
+      <label for="textArea"  class="col-lg-2 control-label">Add Comment</label>
       <div class="col-lg-10">
-        <textarea class="form-control" rows="3" placeholder='Enter a comment' ng-model='frm.comment'></textarea>
+        <textarea class="form-control" rows="3" placeholder='Enter a comment' name='comment' ng-model='frm.comment' required></textarea>
       </div>
-      <button type='submit' class='btn btn-primary'>submit</button>
+      <button type='submit' class='btn btn-primary' ng-disabled='form.$invalid'>submit</button>
       <button type='button' class="btn btn-default" ng-click='show=!show'>Cancle</button>
     </div>
   </form>

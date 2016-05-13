@@ -32,8 +32,8 @@
 
 
         function login () {
-          authService.login($scope.lgn).then(function (responce) {
-            $scope.lgn = {}
+          authService.login($scope.sbFrm).then(function (responce) {
+            $scope.sbFrm = {}
             sb.user = responce;
           })
         }

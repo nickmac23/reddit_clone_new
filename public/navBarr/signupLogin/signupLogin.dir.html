@@ -16,29 +16,35 @@
             <span aria-hidden="true">x</span>
           </button>
 
-          <form class='col-lg-6 left' name='form' ng-model='sng.form' ng-submit='modal.signup()' >
+          <form class='col-lg-6 left' name='frm' ng-model='sng.form' ng-submit='modal.signup()' novalidate>
             <label for="name">CREATE NEW ACCOUNT</label>
             <div class="form-group">
-              <input type="text" class="form-control" name='name' ng-model='sng.name' placeholder="Enter User Name">
+              <input type="text" class="form-control" name='name' ng-model='sng.name' placeholder="Enter User Name" required>
+              <small ng-show='frm.name.$invalid && frm.name.$dirty'>This area is required</small>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control"  name='password'  ng-model='sng.password' placeholder="Enter password">
+              <input type="password" class="form-control"  name='password'  ng-model='sng.password' placeholder="Enter password" required>
+              <small ng-show='frm.password.$invalid && frm.password.$dirty'>This area is required</small>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control"  name='passwordCheck' placeholder="verify passord">
+              <input type="password" class="form-control"  name='passwordCheck' ng-model='sng.pCheck' placeholder="verify pasword" required>
+              <small ng-show='frm.passwordCheck.$invalid && frm.password.$dirty'>This area is required</small>
+              <small ng-show='!(sng.password === sng.pCheck)'>Passwords must match</small>
             </div>
-            <button type="submit" class="btn btn-primary">SIGN UP</button>
+            <button type="submit" class="btn btn-primary" ng-disabled='frm.$invalid || !(sng.password === sng.pCheck)'>SIGN UP</button>
           </form>
 
-          <form class='col-lg-6 right' ng-model='lgn.form' ng-submit='modal.login()'>
+          <form class='col-lg-6 right' ng-model='lgn.form' name='form' ng-submit='modal.login()' novalidate>
             <label for="name">LOG IN</label>
             <div class="form-group" name='login' >
-              <input type="text" class="form-control" name='name' ng-model='lgn.name' placeholder="Enter User Name">
+              <input type="text" class="form-control" name='name' ng-model='lgn.name' placeholder="Enter User Name" required>
+              <small ng-show='form.name.$invalid && form.name.$dirty'>This area is required</small>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control"  name='password' ng-model='lgn.password' placeholder="Enter password">
+              <input type="password" class="form-control"  name='password' ng-model='lgn.password' placeholder="Enter password" required>
+              <small ng-show='form.password.$invalid && form.password.$dirty'>This area is required</small>
             </div>
-            <button type="submit" class="btn btn-primary">LOG IN</button>
+            <button type="submit" class="btn btn-primary" ng-disabled='form.$invalid'>LOG IN</button>
           </form>
         </div>
     </script>
@@ -68,5 +74,8 @@
   }
   .modal-content form button {
     float: right;
+  }
+  small {
+    color: red;
   }
 </style>
