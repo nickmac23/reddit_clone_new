@@ -3,7 +3,8 @@ var router = express.Router();
 var knex = require('../db/knex.js')
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-var secret = 'nicknasty'
+require('dotenv').config();
+var secret = process.env.DB_secret;
 var user;
 
 
@@ -40,14 +41,14 @@ router.post('/login', function(req, res, next) {
   console.log(req.body);
   checkAuthor({name: req.body.name}).then(function (author) {
     if (!author) {
-      res.status(406).send("invalid username")
+      res.status(406).send("invalid username and password")
     } else {
       bcrypt.compare(req.body.password, author.password, function(err, correct) {
           if (correct) {
             var tk = token(author.author_id, author.name)
             res.json({token: tk, user: author})
           } else {
-            res.status(406).send("invalid password")
+            res.status(406).send("invalid username and password")
           }
       });
     }

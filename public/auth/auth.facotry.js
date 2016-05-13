@@ -39,7 +39,7 @@
         }
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
-          user = {name: responce.data.user.name, id: responce.data.user.author_id}
+          user = {name: responce.data.user.name, id: responce.data.user.author_id, status: 200}
         }
         return user
       })
@@ -52,7 +52,7 @@
         }
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
-          user = {name: responce.data.author, id: responce.data.author_id}
+          user = {name: responce.data.author, id: responce.data.author_id, status: 200}
 
         }
         return user

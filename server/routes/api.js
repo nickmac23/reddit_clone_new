@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex.js')
 var jwt = require('jsonwebtoken');
-var secret = 'nicknasty';
+require('dotenv').config();
+var secret = process.env.DB_secret;
 var token;
 var id;
 var name;

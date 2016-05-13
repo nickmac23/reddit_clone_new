@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/reddit_development'
+    connection: process.env.DB_development || process.env.DB_production
   },
 };
