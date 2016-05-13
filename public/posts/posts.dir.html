@@ -1,11 +1,10 @@
 <br>
   <div class="media" ng-repeat='post in vm.posts | orderBy: "-rating" | filter: search.title '>
     <div class="media-left rating"><h4>{{$index}}</h4></div>
-    <nav class='media-left'>
-      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click='vm.vote(10, post.post_id)'></span>
+    <nav class='media-left' >
+      <span class="glyphicon glyphicon-arrow-up rt" aria-hidden="true" ng-click='vm.vote(10, post.post_id)'></span>
       {{post.rating}}
-      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click='vm.vote(-10, post.post_id)'></span>
-
+      <span class="glyphicon glyphicon-arrow-down rt" aria-hidden="true" ng-click='vm.vote(-10, post.post_id)'></span>
     </nav>
     <a class="media-left" href="#">
       <img class="media-object" ng-src="http://fillmurray.com/70/70"
@@ -19,6 +18,9 @@
 </div>
 
 <style>
+  .rt {
+    width: 50px;
+  }
   .rating{
     text-align: center;
     padding-top: 10px;
