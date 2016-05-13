@@ -33,10 +33,13 @@
           size: 'lg',
           controller: function ($scope, $uibModalInstance, authService) {
             $scope.modal = {};
+
             $scope.modal.signup = function () {
               authService.signup($scope.sng)
               .then( function(responce) {
-                if (responce) {
+                if (responce.status === 406) {
+                  $scope.modal.msgS = responce.data
+                } if (responce.status === 200) {
                   $uibModalInstance.close();
                 } else {
                   console.log(responce);
@@ -46,7 +49,10 @@
             $scope.modal.login = function () {
               authService.login($scope.lgn)
               .then( function(responce) {
-                if (responce) {
+                if (responce.status === 406) {
+                  $scope.modal.msgL = responce.data
+                }
+                if (responce.status === 200) {
                   $uibModalInstance.close();
                 } else {
                   console.log(responce.data);

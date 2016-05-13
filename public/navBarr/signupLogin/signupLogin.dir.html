@@ -32,6 +32,7 @@
               <small ng-show='!(sng.password === sng.pCheck)'>Passwords must match</small>
             </div>
             <button type="submit" class="btn btn-primary" ng-disabled='frm.$invalid || !(sng.password === sng.pCheck)'>SIGN UP</button>
+            <small ng-show='modal.msgS'>{{modal.msgS | uppercase}}</small>
           </form>
 
           <form class='col-lg-6 right' ng-model='lgn.form' name='form' ng-submit='modal.login()' novalidate>
@@ -44,6 +45,7 @@
               <input type="password" class="form-control"  name='password' ng-model='lgn.password' placeholder="Enter password" required>
               <small ng-show='form.password.$invalid && form.password.$dirty'>This area is required</small>
             </div>
+            <small>{{modal.msgL  | uppercase}} </small>
             <button type="submit" class="btn btn-primary" ng-disabled='form.$invalid'>LOG IN</button>
           </form>
         </div>

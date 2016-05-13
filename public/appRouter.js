@@ -57,10 +57,10 @@
         }
         firstCheck = false;
         // if you mess around with the token, log them out and destroy it
-        if(err.data === "invalid token" || err.data === "invalid signature" || err.data === "jwt malformed"){
+        if(err.status === 406){
           // $location.path("/logout");
           console.log(err.data);
-          return $q.reject(err);
+          return err;
         }
         // if you try to access a user who is not yourself
         if(err.status === 401){

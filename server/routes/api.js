@@ -20,11 +20,6 @@ function checkToken (req,res,next){
   }
 }
 
-// function token (id) {
-//   token = jwt.sign({id: id}, secret)
-//   return token
-// }
-/* GET home page. */
 router.get('/', function(req, res, next) {
   postarray = [];
   knex('authors')

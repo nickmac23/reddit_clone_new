@@ -32,10 +32,11 @@
 
 
     function login (userData) {
-      console.log('authout', userData);
       return $http.post('http://localhost:3000/auth/login', userData)
       .then( function (responce) {
-        console.log('authIn', responce);
+        if (responce.status === 406 ) {
+          return responce
+        }
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
           user = {name: responce.data.user.name, id: responce.data.user.author_id}
@@ -46,6 +47,9 @@
     function signup (userData) {
       return $http.post('http://localhost:3000/auth/signup', userData)
       .then( function (responce) {
+        if (responce.status === 406 ) {
+          return responce
+        }
         if (responce.data.token) {
           localStorage.setItem('token', responce.data.token);
           user = {name: responce.data.author, id: responce.data.author_id}

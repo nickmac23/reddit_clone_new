@@ -40,15 +40,14 @@ router.post('/login', function(req, res, next) {
   console.log(req.body);
   checkAuthor({name: req.body.name}).then(function (author) {
     if (!author) {
-      res.json('invalid username')
+      res.status(406).send("invalid username")
     } else {
       bcrypt.compare(req.body.password, author.password, function(err, correct) {
           if (correct) {
-
             var tk = token(author.author_id, author.name)
             res.json({token: tk, user: author})
           } else {
-            res.json('bad password no token!')
+            res.status(406).send("invalid password")
           }
       });
     }
@@ -59,7 +58,7 @@ router.post('/login', function(req, res, next) {
 router.post('/signup', function(req, res, next) {
   checkAuthor ({name: req.body.name}).then(function (author) {
     if (author) {
-      res.json('username allready exsits!')
+      res.status(406).send('username allready exsits!')
     } else {
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(req.body.password, salt, function(err, hash) {
