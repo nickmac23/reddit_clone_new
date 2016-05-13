@@ -10,7 +10,7 @@ var user;
 function token (id, name) {
   var token = jwt.sign({id: id, name: name}, secret)
   return token
-} 
+}
 
 function checkAuthor (data) {
   return knex('authors').where(data).first()
@@ -37,6 +37,7 @@ router.post('/loggedin', checkToken, function (req,res, next) {
 })
 
 router.post('/login', function(req, res, next) {
+  console.log(req.body);
   checkAuthor({name: req.body.name}).then(function (author) {
     if (!author) {
       res.json('invalid username')

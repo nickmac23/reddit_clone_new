@@ -24,7 +24,6 @@
     }
 
     function addPost (postData) {
-      console.log(postData);
       return $http.post('http://localhost:3000/api/post', postData)
       .then( function (responce) {
         posts.push(responce.data)

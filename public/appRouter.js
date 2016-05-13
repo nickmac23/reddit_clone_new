@@ -2,6 +2,7 @@
   'use strict';
   var dependencies = [
     'ui.router',
+    'ui.bootstrap'
   ];
 
   angular.module('app', dependencies)
@@ -28,6 +29,7 @@
         resolve:{
          simpleObj: function(authService){
             return authService.loggedin().then( function (data) {
+              console.log(data);
               return data
             })
           }
