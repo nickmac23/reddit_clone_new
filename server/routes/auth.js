@@ -3,7 +3,7 @@ var router = express.Router();
 var knex = require('../db/knex.js')
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-require('dotenv').config();
+require('dotenv').config({path:__dirname + '/../.env'});
 var secret = process.env.DB_secret;
 var user;
 
