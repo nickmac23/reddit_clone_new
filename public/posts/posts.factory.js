@@ -13,6 +13,7 @@
       add: addPost,
       comment: addComment,
       vote: vote,
+      del: del,
     }
 
     function listPosts () {
@@ -55,6 +56,21 @@
           }
         }
         return posts
+      })
+    }
+    function del (id) {
+      console.log(id);
+      return $http.delete('http://localhost:3000/api/posts/' + id)
+      .then( function (resoponce) {
+        var data = resoponce.data[0]
+        if (resoponce.status === 200) {
+          for (var i = 0; i < posts.length; i++) {
+            if (posts[i].post_id == data.post_id) {
+              posts.splice(i, 1);
+              return posts
+            }
+          }
+        }
       })
     }
   }

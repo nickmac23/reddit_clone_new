@@ -52,6 +52,13 @@ router.get('/', function(req, res, next) {
     })
   })
 });
+router.delete('/posts/:id', function(req, res, next) {
+  knex('posts').where('post_id', req.params.id).del()
+  .returning('*')
+  .then( function (data) {
+    res.json(data)
+  })
+})
 
 router.post('/post', checkToken, function(req, res, next) {
   req.body.author_fk = id
@@ -77,5 +84,6 @@ router.post('/vote',checkToken, function(req, res, next) {
     res.json(responce)
   })
 })
+
 
 module.exports = router;

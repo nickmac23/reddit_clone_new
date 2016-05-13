@@ -34,7 +34,18 @@
               return data
             })
           }
-         },
+        },
+      })
+      .state('userporfile', {
+        url: "/userprofile",
+        template: "<user-profile></user-profile>",
+        resolve:{
+         simpleObj: function(authService){
+            return authService.loggedin().then( function (data) {
+              return data
+            })
+          }
+        },
       })
     $httpProvider.interceptors.push("AuthInterceptor");
   }
