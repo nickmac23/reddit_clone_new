@@ -32,9 +32,17 @@
 
 
         function login () {
+          $scope.sb.msgl = false;
           authService.login($scope.sbFrm).then(function (responce) {
-            $scope.sbFrm = {}
-            sb.user = responce;
+            if (responce.status === 406) {
+              $scope.sb.msgL = responce.data
+            }
+            if (responce.status === 200) {
+              $scope.sbFrm = {}
+              sb.user = responce; 
+            } else {
+              console.log(responce.data);
+            }
           })
         }
       }

@@ -35,6 +35,7 @@
             $scope.modal = {};
 
             $scope.modal.signup = function () {
+              $scope.modal.msgS = false;
               authService.signup($scope.sng)
               .then( function(responce) {
                 if (responce.status === 406) {
@@ -47,6 +48,7 @@
               })
             };
             $scope.modal.login = function () {
+              $scope.modal.msgL = false;
               authService.login($scope.lgn)
               .then( function(responce) {
                 if (responce.status === 406) {

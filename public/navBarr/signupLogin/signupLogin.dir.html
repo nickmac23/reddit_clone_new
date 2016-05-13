@@ -45,7 +45,7 @@
               <input type="password" class="form-control"  name='password' ng-model='lgn.password' placeholder="Enter password" required>
               <small ng-show='form.password.$invalid && form.password.$dirty'>This area is required</small>
             </div>
-            <small>{{modal.msgL  | uppercase}} </small>
+            <small ng-show='modal.msgL'>{{modal.msgL | uppercase}}</small>
             <button type="submit" class="btn btn-primary" ng-disabled='form.$invalid'>LOG IN</button>
           </form>
         </div>
