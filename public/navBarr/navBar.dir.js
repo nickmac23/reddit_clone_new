@@ -8,6 +8,12 @@
     return {
       templateUrl:'/navBarr/navBar.dir.html',
       scope: {},
+      controller: controller
+    }
+
+    function controller ($location, $rootScope, $state, $scope) {
+      $scope.$state = $state;
+
     }
   }
 

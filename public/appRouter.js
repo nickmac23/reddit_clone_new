@@ -8,14 +8,20 @@
   var firstCheck = true;
 
   angular.module('app', dependencies)
-    .config(setupRoutes);
+    .config(setupRoutes)
+    .run(checkRoute)
 
+  function checkRoute ($rootScope, $location) {
+    $rootScope.$on( "$stateChangeStart", function(event, next, current) {
+      // console.log($location);
+      // console.log('here');
+    })
+  }
   setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
 
   function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
     // $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
-
     $stateProvider
       .state('home', {
         url: "/",
