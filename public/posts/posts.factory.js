@@ -8,7 +8,9 @@
 
   function factory ($http) {
     var posts = []
+    var urlApi =  'https://icantbelieveitsnotreddit.herokuapp.com/api'
     return {
+      postAll: postAll,
       list: listPosts,
       add: addPost,
       comment: addComment,
@@ -16,8 +18,17 @@
       del: del,
     }
 
+
+    function postAll (route, data) {
+      return $http.post( urlApi + route, data).then(
+        function (responce) {
+          return responce
+        }
+      )
+    }
+
     function listPosts () {
-      return $http.get('http://localhost:3000/api/')
+      return $http.get(urlApi + '/')
       .then( function (responce) {
         posts = responce.data;
         return posts
@@ -25,15 +36,14 @@
     }
 
     function addPost (postData) {
-      return $http.post('http://localhost:3000/api/post', postData)
-      .then( function (responce) {
+      return postAll('/post', postData).then( function (responce){
         posts.push(responce.data)
         return posts
       })
     }
 
     function addComment (commentData) {
-      return $http.post('http://localhost:3000/api/comment', commentData)
+      return $http.post( urlApi + '/comment', commentData)
       .then( function (responce) {
         var data = responce.data[0];
         for (var i = 0; i < posts.length; i++) {
@@ -47,7 +57,7 @@
     }
 
     function vote (data) {
-      return $http.post('http://localhost:3000/api/vote', data)
+      return $http.post( urlApi + '/vote', data)
       .then( function (responce) {
         var data = responce.data[0];
         for (var i = 0; i < posts.length; i++) {
@@ -59,8 +69,7 @@
       })
     }
     function del (id) {
-      console.log(id);
-      return $http.delete('http://localhost:3000/api/posts/' + id)
+      return $http.delete( urlApi + '/posts/' + id)
       .then( function (resoponce) {
         var data = resoponce.data[0]
         if (resoponce.status === 200) {

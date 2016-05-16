@@ -67,7 +67,6 @@
         return (config);
       },
       responseError: function(err){
-        console.log(err.data);
 
         if (err.status === 403 && !firstCheck) {
           $rootScope.$emit('event', {foo:'bar'})
@@ -76,7 +75,6 @@
         // if you mess around with the token, log them out and destroy it
         if(err.status === 406){
           // $location.path("/logout");
-          console.log(err.data);
           return err;
         }
         // if you try to access a user who is not yourself

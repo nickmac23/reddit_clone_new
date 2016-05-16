@@ -10,6 +10,7 @@
 
   function factory ($http) {
     var user = false;
+    var url = 'https://icantbelieveitsnotreddit.herokuapp.com/auth/'
     return {
       loggedin: loggedin,
       login: login,
@@ -21,7 +22,7 @@
       return user
     }
     function loggedin () {
-      return $http.post('http://localhost:3000/auth/loggedin')
+      return $http.post(url + 'loggedin')
       .then( function (responce) {
         if (responce.data) {
           user = responce.data;
@@ -32,7 +33,7 @@
 
 
     function login (userData) {
-      return $http.post('http://localhost:3000/auth/login', userData)
+      return $http.post(url + 'login', userData)
       .then( function (responce) {
         if (responce.status === 406 ) {
           return responce
@@ -45,7 +46,7 @@
       })
     }
     function signup (userData) {
-      return $http.post('http://localhost:3000/auth/signup', userData)
+      return $http.post(url + 'signup', userData)
       .then( function (responce) {
         if (responce.status === 406 ) {
           return responce
