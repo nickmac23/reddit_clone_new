@@ -39,7 +39,7 @@
             }
             if (responce.status === 200) {
               $scope.sbFrm = {}
-              sb.user = responce; 
+              sb.user = responce;
             } else {
               console.log(responce.data);
             }

@@ -15,7 +15,6 @@
     function controller (postsService, $scope, $state) {
       var vm = this;
       $scope.frm = {}
-      $scope.frm.url = 'http://fillmurray.com/200/300';
       vm.addPost = addPost
 
       function addPost () {

@@ -67,9 +67,8 @@
         return (config);
       },
       responseError: function(err){
-
         if (err.status === 403 && !firstCheck) {
-          $rootScope.$emit('event', {foo:'bar'})
+          $rootScope.$emit('event')
         }
         firstCheck = false;
         // if you mess around with the token, log them out and destroy it
@@ -83,7 +82,7 @@
           return $q.reject(err);
         }
         return $q.reject(err);
-      }
+      },
     };
   });
 }());
